@@ -1,0 +1,73 @@
+public class Deck
+{
+    private Card[] theCards = new Card[52]; 
+    
+    protected int topCard = 0;    
+    public int gettopCard(){
+        return topCard;
+    }
+
+   
+    public Deck()
+    {
+        int k = 0;
+        for (int j = 0; j <= 3; j++) {      
+            for (int i = 2; i <= 14; i++) { 
+                theCards[k] = new Card(j, i);
+                k++;
+            }
+        }
+    }
+
+  
+    public void shuffle()
+    {
+        for (int j = 0; j < 50; j++) {  
+            
+            for (int i = 0; i < theCards.length; i++) {
+                int randomIndex = (int)(theCards.length*Math.random());
+
+               
+                Card temp = theCards[i];
+                theCards[i] = theCards[randomIndex];
+                theCards[randomIndex] = temp;
+            }
+        }
+    }
+
+   
+    public Card draw()
+    {
+        if (topCard < theCards.length) {
+            topCard++;  
+            return theCards[topCard-1];
+        } else {
+            System.out.println("Hey, there are no more cards in this deck!");
+            return null;
+        }
+    }
+
+   
+    public String toString()
+    {
+        String r = "";
+        for (int i = 0; i < theCards.length; i++) {
+            r += theCards[i] + "\n";
+        }
+        return r;
+    }
+
+    public static void main(String[] args)
+    {
+        Deck d = new Deck();
+        System.out.println(d);
+        d.shuffle();
+        System.out.println();
+        System.out.println(d);
+
+        for (int i = 0; i < 52;  i++) {
+            System.out.println("Draw returned: " + d.draw());
+        }
+        System.out.println(d.draw());
+    }
+}
