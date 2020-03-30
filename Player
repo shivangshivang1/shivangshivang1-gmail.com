@@ -1,0 +1,219 @@
+import java.util.*;
+
+public class Player
+{
+    protected Card[] cardsInHand = new Card[25];   
+    private int numCardsInHand = 0;
+
+    private String playerName;
+   
+    private int numBooks;
+    protected int nextPlayer = 0;
+
+   
+    protected boolean[] book = new boolean[12];
+
+    int numRank2 = 0, numRank3 = 0, numRank4 = 0, numRank5 = 0, numRank6 = 0, numRank7 = 0, numRank8 = 0, numRank9 = 0, numRank10 = 0, numRank11 = 0, numRank12 = 0, numRank13 = 0, numRank14 = 0;
+   
+    int book2 = 0, book3 = 0, book4 = 0, book5 = 0, book6 = 0, book7 = 0, book8 = 0, book9 = 0, book10 = 0, book11 = 0, book12 = 0, book13 = 0, book14 = 0;
+
+
+    public Player(String Player){
+        this.playerName = Player;
+        numBooks = 0;
+        for(int i = 0; i < 12;i++){
+            book[i] = false;
+        }
+    }
+
+    public int getnumCardsInHand(){
+        return numCardsInHand;
+    }
+
+    public String getPlayerName(){
+        return playerName;
+    }
+
+    public int getnumBooks(){
+        return numBooks;
+    }
+
+    public void addCard(Card c){
+        if (numCardsInHand < cardsInHand.length) {
+            cardsInHand[numCardsInHand] = c;
+            numCardsInHand++;  
+        } else {
+            System.out.println("No more card in the deck!");
+        }
+    }
+
+    
+    public void transfercard(int rank, Player p){
+        for(int i = 0; i < p.numCardsInHand; i++){
+            if((p.cardsInHand[i].getRank()) == rank){
+                cardsInHand[numCardsInHand+1] = p.cardsInHand[i];
+            }
+        }
+    }
+
+    public void removeCard(int index){
+       
+        for (int i = 0; i < cardsInHand.length;i++){
+
+            cardsInHand[index] = null;
+
+        }
+       
+        for (int i = 0; i < cardsInHand.length;i++){
+            if(cardsInHand[index] == null){
+                cardsInHand[index] = cardsInHand[index+1];
+            }
+        }
+        numCardsInHand--;
+    }
+
+    public void findBooks(){
+        int rank2 = 0, rank3 = 0, rank4 = 0, rank5 = 0, rank6 = 0, rank7 = 0, rank8 = 0, rank9 = 0, rank10 = 0, rank11 = 0, rank12 = 0, rank13 = 0, rank14 = 0;
+        for (int i = 0; i < numCardsInHand; i++){
+            if((cardsInHand[i].getRank()) == 2){
+                rank2++;
+                if(rank2 == 4){
+                    book[0] = true;
+                    numBooks++;
+                    if(book[0] == true){book2 = 1;}else{book2 = 0;}
+                }
+            }else if((cardsInHand[i].getRank()) == 3){
+                rank3++;
+                if(rank3 == 4){
+                    book[1] = true;
+                    numBooks++;
+                    if(book[0] == true){book3 = 1;}else{book3 = 0;}
+                }
+            }else if((cardsInHand[i].getRank()) == 4){
+                rank4++;
+                if(rank4 == 4){
+                    book[2] = true;
+                    numBooks++;
+                    if(book[0] == true){book4 = 1;}else{book4 = 0;}
+                }
+            }else if((cardsInHand[i].getRank()) == 5){
+                rank5++;
+                if(rank5 == 4){
+                    book[3] = true;
+                    numBooks++;
+                    if(book[0] == true){book5 = 1;}else{book5 = 0;}
+                }
+            }else if((cardsInHand[i].getRank()) == 6){
+                rank6++;
+                if(rank6 == 4){
+                    book[4] = true;
+                    numBooks++;
+                    if(book[0] == true){book6 = 1;}else{book6 = 0;}
+                }
+            }else if((cardsInHand[i].getRank()) == 7){
+                rank7++;
+                if(rank7 == 4){
+                    book[5] = true;
+                    numBooks++;
+                    if(book[0] == true){book7 = 1;}else{book7 = 0;}
+                }
+            }else if((cardsInHand[i].getRank()) == 8){
+                rank8++;
+                if(rank8 == 4){
+                    book[6] = true;
+                    numBooks++;
+                    if(book[0] == true){book8 = 1;}else{book8 = 0;}
+                }
+            }else if((cardsInHand[i].getRank()) == 9){
+                rank9++;
+                if(rank9 == 4){
+                    book[7] = true;
+                    if(book[0] == true){book9 = 1;}else{book9 = 0;}
+                }
+            }else if((cardsInHand[i].getRank()) == 10){
+                rank10++;
+                if(rank10 == 4){
+                    book[8] = true;
+                    numBooks++;
+                    if(book[0] == true){book10 = 1;}else{book10 = 0;}
+                }
+            }else if((cardsInHand[i].getRank()) == 11){
+                rank11++;
+                if(rank11 == 4){
+                    book[9] = true;
+                    numBooks++;
+                    if(book[0] == true){book11 = 1;}else{book11 = 0;}
+                }
+            }else if((cardsInHand[i].getRank()) == 12){
+                rank12++;
+                if(rank12 == 4){
+                    book[10] = true;
+                    numBooks++;
+                    if(book[0] == true){book12 = 1;}else{book12 = 0;}
+                }
+            }else if((cardsInHand[i].getRank()) == 13){
+                rank13++;
+                if(rank13 == 4){
+                    book[11] = true;
+                    numBooks++;
+                    if(book[0] == true){book13 = 1;}else{book13 = 0;}
+                }
+            }else if((cardsInHand[i].getRank()) == 14){
+                rank14++;
+                if(rank14 == 4){
+                    book[12] = true;
+                    numBooks++;
+                    if(book[0] == true){book14 = 1;}else{book14 = 0;}
+                }
+            }
+        }
+        for(int i = 0; i < book.length;i++){
+            if(book[i] == true){
+                System.out.println("You have a book of rank " + (i + 2));
+            }
+        }
+    }
+
+    public String toString()
+    {
+        String r = "";
+        for (int i = 0; i < numCardsInHand; i++) {
+            r += cardsInHand[i] + "\n";
+        }
+        return "BOOK 0 == false and 1 == true" + "\n" +
+                "__________________________________________________________________" + "\n"+
+                "|" + "       " + "|" + " 2 " + "|"+  " 3 "  + "|" + " 4 " + "|" + " 5 " + "|" + " 6 " + "|"
+                + " 7 " + "|" + " 8 " + "|" + " 9 " + "|" + " 10 " + "|" + " 11 " + "|" + " 12 " + "|" + " 13 " + "|" + " 14 " + "|" +"\n" +
+                "-----------------------------------------------------------------" + "\n" +
+                "|" + " Book  " + "|" + " " +  book2 + " " + "|"+  " " +  book3 + " "  + "|" + " " +  book4 + " " + "|" + " " +  book5 + " " + "|" + " " +  book6 + " " + "|"
+                + " " +  book7 + " " + "|" + " " +  book8+ " " + "|" + " " +  book9 + " " + "|" + " " +  book10 + " " + "|" + " " +  book11 + " " + "|" + " " +  book12 + " " + "|" + " " +  book13 + " " + "|" + " " +  book14 + " "+ "|" +"\n" +
+                "|________________________________________________________________|" + "\n" + "\n" +
+                "Cards in Hand" + "\n"  + "-------------" + "\n" + r;
+    }
+
+   
+    public static void main(String[] args){
+        Player P = new Player("john");
+        Player P1 = new Player("steve");
+        Deck d = new Deck();
+        d.shuffle();
+        for(int i = 0; i < 1;i++){
+            for(int j = 0; j < 5;j++){
+                P.addCard(d.draw());
+                P1.addCard(d.draw());
+            }
+        }
+
+        System.out.println(P.getPlayerName());
+        System.out.println(P);
+        System.out.println(P1.getPlayerName());
+        System.out.println(P1);
+
+        P.transfercard(0, P1);
+
+        System.out.println(P.getPlayerName());
+        System.out.println(P);
+        System.out.println(P1.getPlayerName());
+        System.out.println(P1);
+    }
+}
